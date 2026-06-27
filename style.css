@@ -25,14 +25,14 @@ body {
     background: transparent; 
 }
 
-/* --- SCROLLYTELLING CANVAS --- */
+/* --- SCROLLYTELLING VIDEO BACKGROUND --- */
 #scrolly-video {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
+    object-fit: cover; /* Makes sure the video fills the screen beautifully */
     z-index: -2; 
 }
 
@@ -717,7 +717,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
     
     .footer-col.brand-col {
         max-width: 100%; 
-        margin: 0 auto; 
+        margin: 0 auto;
     }
     
     .social-icons {

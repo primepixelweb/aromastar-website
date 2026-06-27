@@ -1,79 +1,31 @@
 // ==========================================
-// 1. APPLE-STYLE SCROLLYTELLING CANVAS VIDEO
+// 1. SCROLLYTELLING VIDEO (MP4 SCRUBBING)
 // ==========================================
-const canvas = document.getElementById("scrolly-video");
-const ctx = canvas.getContext("2d");
+const video = document.getElementById("scrolly-video");
 
-// We have 240 frames (0 to 239)
-const frameCount = 240; 
-const images = [];
-
-// Helper function to match exact file name format in the main folder
-const currentFrame = (index) => {
-    // Adds the zeros to the front (e.g., 5 becomes "000005")
-    const paddedIndex = index.toString().padStart(6, '0');
-    
-    // Path fixed to look directly in the frames folder
-    return `frames/frame_${paddedIndex}.png`;
-};
-
-// Preload all 240 images into the browser's memory so there is ZERO lag
-for (let i = 0; i < frameCount; i++) {
-    const img = new Image();
-    img.src = currentFrame(i);
-    images.push(img);
-}
-
-// Function to make the image cover the whole screen beautifully (Object-Fit: Cover)
-function render(index) {
-    if (!images[index] || !images[index].complete) return;
-    
-    const img = images[index];
-    const canvasRatio = canvas.width / canvas.height;
-    const imgRatio = img.width / img.height;
-    
-    let drawWidth = canvas.width;
-    let drawHeight = canvas.height;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    if (canvasRatio > imgRatio) {
-        drawHeight = canvas.width / imgRatio;
-        offsetY = (canvas.height - drawHeight) / 2;
-    } else {
-        drawWidth = canvas.height * imgRatio;
-        offsetX = (canvas.width - drawWidth) / 2;
-    }
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-}
-
-// Ensure canvas is always the exact size of the user's screen
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    render(currentIndex);
-}
-window.addEventListener('resize', resizeCanvas);
-
-// Draw the very first frame immediately when it loads
-images[0].onload = () => {
-    resizeCanvas();
-};
-
-let currentIndex = 0;
+// Force the video to load its metadata so we know how long it is
+video.load();
 
 // The magic scroll function
 window.addEventListener("scroll", () => {
-    const scrollTop = document.documentElement.scrollTop;
-    const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
-    
-    const scrollFraction = scrollTop / maxScrollTop;
-    
-    currentIndex = Math.min(frameCount - 1, Math.floor(scrollFraction * frameCount));
-    
-    requestAnimationFrame(() => render(currentIndex));
+    // Only run if the video is ready and has a duration
+    if (video.duration) {
+        const scrollTop = document.documentElement.scrollTop;
+        const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+        
+        // Calculate the percentage of the scroll (0.0 to 1.0)
+        let scrollFraction = scrollTop / maxScrollTop;
+        
+        // Ensure the fraction doesn't go below 0 or above 1
+        if (scrollFraction < 0) scrollFraction = 0;
+        if (scrollFraction > 1) scrollFraction = 1;
+        
+        // Use requestAnimationFrame for buttery smooth video scrubbing
+        requestAnimationFrame(() => {
+            // Set the video time exactly to the scroll percentage
+            video.currentTime = scrollFraction * video.duration;
+        });
+    }
 });
 
 
