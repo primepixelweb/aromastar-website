@@ -717,7 +717,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
     
     .footer-col.brand-col {
         max-width: 100%; 
-        margin: 0 auto;
+        margin: 0 auto; 
     }
     
     .social-icons {
