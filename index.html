@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Aromastar Digital Marketing",
-      "image": "https://aromastar.vercel.app/public/logo.png",
+      "image": "https://aromastar.vercel.app/logo.png",
       "description": "Top-rated digital marketing agency based in Navi Mumbai specializing in SEO, Meta Ads, and Website Design.",
       "address": {
         "@type": "PostalAddress",
@@ -54,7 +54,8 @@
     <!-- Header / Navigation Bar -->
     <header class="navbar">
         <div class="logo">
-            <img src="public/logo.png" alt="Aromastar Digital Marketing Agency Logo" class="nav-logo-img">
+            <!-- Path fixed for logo sitting in the main folder -->
+            <img src="logo.png" alt="Aromastar Digital Marketing Agency Logo" class="nav-logo-img">
             Aromastar.
         </div>
         <nav>
@@ -79,7 +80,6 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content reveal">
-            <!-- H1 Tag is crucial for SEO -->
             <h1>Data-Driven Growth.<br>Creative Execution.</h1>
             <p>We build personalized, scalable digital marketing strategies that turn clicks into high-value clients for ambitious brands in Navi Mumbai and beyond.</p>
             <a href="#contact" class="primary-btn">Get Your Free SEO Audit</a>
@@ -89,7 +89,6 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="about-content reveal">
-            <!-- H2 Tags tell Google what the section is about -->
             <h2>Your Digital Growth Partner in Navi Mumbai</h2>
             <p>At Aromastar, we don't believe in one-size-fits-all. We are a premier performance marketing agency specializing in helping startups, SMBs, E-commerce brands, and B2B tech companies scale aggressively.</p>
             <p>Based in Navi Mumbai, our core focus spans highly-optimized SEO setups, ROI-driven Meta and Google Ads, and premium custom website design. We handle the heavy lifting of digital lead generation so you can focus on running your business.</p>
@@ -166,7 +165,6 @@
         </div>
         
         <div class="services-grid">
-            <!-- Service 1 -->
             <div class="service-category reveal">
                 <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
                 <h3>Design & Branding</h3>
@@ -177,8 +175,6 @@
                     <li><span>Business Card Design</span> <span>₹500 – ₹3k</span></li>
                 </ul>
             </div>
-            
-            <!-- Service 2 -->
             <div class="service-category reveal">
                 <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
                 <h3>Web & SEO Setup</h3>
@@ -189,8 +185,6 @@
                     <li><span>Google Biz Profile</span> <span>₹3k – ₹5k</span></li>
                 </ul>
             </div>
-            
-            <!-- Service 3 -->
             <div class="service-category reveal">
                 <div class="service-icon"><i class="fa-solid fa-bullhorn"></i></div>
                 <h3>Ads & Campaigns</h3>
@@ -201,8 +195,6 @@
                     <li><span>WhatsApp Marketing</span> <span>₹2k – ₹15k</span></li>
                 </ul>
             </div>
-            
-            <!-- Service 4 -->
             <div class="service-category reveal">
                 <div class="service-icon"><i class="fa-solid fa-video"></i></div>
                 <h3>Content & Video</h3>
@@ -250,10 +242,8 @@
     <!-- Professional Footer -->
     <footer class="footer">
         <div class="footer-container reveal">
-            <!-- Brand Column -->
             <div class="footer-col brand-col">
                 <div class="footer-logo">Aromastar.</div>
-                <!-- Keyword rich footer bio -->
                 <p>Aromastar is a top-rated digital marketing agency based in Navi Mumbai, delivering ROI-driven SEO, Meta Ads, and Custom Web Design to ambitious brands globally.</p>
                 <div class="social-icons">
                     <a href="https://www.instagram.com/aromastar.in?utm_source=qr&igsh=MXM2aTR6aHp1ZTdkdA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -263,7 +253,6 @@
                 </div>
             </div>
             
-            <!-- Quick Links Column -->
             <div class="footer-col links-col">
                 <h3>Quick Links</h3>
                 <ul>
@@ -275,7 +264,6 @@
                 </ul>
             </div>
 
-            <!-- Legal Column -->
             <div class="footer-col links-col">
                 <h3>Legal</h3>
                 <ul>
@@ -293,7 +281,6 @@
     </footer>
 
     <!-- FLOATING WHATSAPP BUTTON -->
-    <!-- Added aria-label for accessibility/SEO -->
     <a href="https://wa.me/919167119822" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
