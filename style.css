@@ -25,14 +25,14 @@ body {
     background: transparent; 
 }
 
-/* --- SCROLLYTELLING VIDEO BACKGROUND --- */
+/* --- SCROLLYTELLING CANVAS --- */
 #scrolly-video {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Makes sure the video fills the screen beautifully */
+    object-fit: cover;
     z-index: -2; 
 }
 
