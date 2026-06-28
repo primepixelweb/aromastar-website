@@ -10,7 +10,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    /* New modern, readable font */
+    font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -36,7 +37,7 @@ body {
     z-index: -2; 
 }
 
-/* --- DYNAMIC GLASS OVERLAY --- */
+/* --- DYNAMIC GLASS OVERLAY (LIGHTENED FOR CLEAR VIDEO) --- */
 #video-overlay {
     position: fixed;
     top: 0;
@@ -46,14 +47,15 @@ body {
     z-index: -1; 
     pointer-events: none; 
     transition: background-color 1s ease-in-out; 
-    background-color: rgba(6, 15, 30, 0.75); 
+    /* Opacity drastically reduced so video pops */
+    background-color: rgba(6, 15, 30, 0.4); 
 }
 
-body.theme-home #video-overlay { background-color: rgba(6, 15, 30, 0.75); }
-body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.85); }
-body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.85); }
-body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.88); }
-body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
+body.theme-home #video-overlay { background-color: rgba(6, 15, 30, 0.4); }
+body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.5); }
+body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.5); }
+body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.55); }
+body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.6); }
 
 /* --- SCROLL REVEAL ANIMATIONS --- */
 .reveal {
@@ -86,9 +88,9 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Lora', serif; /* Elegant heading font */
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--gold);
     cursor: pointer;
 }
@@ -109,6 +111,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
     color: var(--white);
     text-decoration: none;
     font-size: 15px;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
@@ -164,11 +167,11 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .hero-content h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Lora', serif;
     font-size: 64px;
     color: var(--white);
     margin-bottom: 24px;
-    line-height: 1.1;
+    line-height: 1.15;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,0.8);
 }
 
@@ -212,17 +215,18 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .about-content h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Lora', serif;
     font-size: 40px;
     color: var(--gold);
     margin-bottom: 20px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
 .about-content p {
     font-size: 16px;
     color: var(--white);
     margin-bottom: 20px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 }
 
 .stats {
@@ -236,8 +240,8 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 .stat-box h3 {
     font-size: 36px;
     color: var(--white);
-    font-family: 'Playfair Display', serif;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    font-family: 'Lora', serif;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
 .stat-box p {
@@ -259,7 +263,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .section-title h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Lora', serif;
     font-size: 40px;
     color: var(--gold);
     margin-bottom: 10px;
@@ -269,6 +273,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 .section-title p {
     color: var(--white);
     font-size: 16px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 }
 
 .pricing-grid {
@@ -281,9 +286,10 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .pricing-card {
-    background-color: rgba(255, 255, 255, 0.03);
+    /* Slightly darkened to ensure readability against bright video */
+    background-color: rgba(6, 12, 25, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border-radius: 8px;
     padding: 40px 30px;
     width: 330px;
@@ -323,6 +329,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .pricing-card h3 {
+    font-family: 'Lora', serif;
     font-size: 24px;
     margin-bottom: 15px;
     color: var(--white);
@@ -338,7 +345,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 .pricing-card .price span {
     font-size: 14px;
     color: var(--text-gray);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .package-features {
@@ -371,7 +378,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .service-category {
-    background-color: rgba(10, 25, 47, 0.4);
+    background-color: rgba(6, 12, 25, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     padding: 40px;
@@ -394,7 +401,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
     transform: translateY(-5px);
     border-color: rgba(212, 175, 55, 0.3);
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-    background-color: rgba(10, 25, 47, 0.6);
+    background-color: rgba(10, 25, 47, 0.8);
 }
 
 .service-category:hover::before {
@@ -416,10 +423,10 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .service-category h3 {
+    font-family: 'Lora', serif;
     font-size: 24px;
     color: var(--white);
     margin-bottom: 25px;
-    font-family: 'Playfair Display', serif;
     letter-spacing: 0.5px;
 }
 
@@ -462,8 +469,8 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
     display: flex;
     max-width: 1000px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
+    background-color: rgba(6, 12, 25, 0.6);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.05);
     border-radius: 12px;
     overflow: hidden;
@@ -473,11 +480,11 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 .contact-info {
     flex: 1;
     padding: 50px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .contact-info h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Lora', serif;
     font-size: 36px;
     color: var(--gold);
     margin-bottom: 15px;
@@ -516,7 +523,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 4px;
     color: var(--white);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
 }
 
@@ -533,7 +540,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 
 /* --- THE PROFESSIONAL FOOTER --- */
 .footer {
-    background-color: rgba(10, 25, 47, 0.5);
+    background-color: rgba(10, 25, 47, 0.6);
     backdrop-filter: blur(15px);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding: 60px 5% 30px;
@@ -555,10 +562,10 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.92); }
 }
 
 .footer-logo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Lora', serif;
     font-size: 28px;
     color: var(--gold);
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 15px;
 }
 
