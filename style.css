@@ -10,7 +10,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Client's preferred clean body font */
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
@@ -35,9 +34,10 @@ body {
     height: 100vh;
     object-fit: cover;
     z-index: -2; 
+    filter: contrast(1.15) brightness(1.1) saturate(1.1);
 }
 
-/* --- DYNAMIC GLASS OVERLAY (15% Tint) --- */
+/* --- DYNAMIC GLASS OVERLAY --- */
 #video-overlay {
     position: fixed;
     top: 0;
@@ -47,10 +47,10 @@ body {
     z-index: -1; 
     pointer-events: none; 
     transition: background-color 1s ease-in-out; 
-    background-color: rgba(2, 5, 10, 0.15); 
+    background-color: transparent; 
 }
 
-body.theme-home #video-overlay { background-color: rgba(2, 5, 10, 0.15); }
+body.theme-home #video-overlay { background-color: transparent; }
 body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.3); }
 body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.4); }
 body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.4); }
@@ -87,7 +87,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Playfair Display', serif; /* Client's preferred heading font */
+    font-family: 'Playfair Display', serif;
     font-size: 28px;
     font-weight: 700;
     color: var(--gold);
@@ -170,7 +170,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     font-size: 64px;
     color: var(--gold);
     margin-bottom: 10px;
-    text-transform: uppercase; /* Match client screenshot exactly */
+    text-transform: uppercase;
     text-shadow: 0 5px 25px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,1);
 }
 
@@ -443,14 +443,21 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     list-style: none;
 }
 
+/* Flexbox tweak for long service names */
 .service-category li {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 15px;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 14px;
     color: var(--text-gray);
     padding: 15px 0;
     border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+
+.service-category li span:first-child {
+    flex: 1;
+    line-height: 1.4;
 }
 
 .service-category li:last-child {
@@ -461,10 +468,11 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 .service-category li span:last-child {
     color: var(--gold);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     background: rgba(212, 175, 55, 0.1);
     padding: 5px 12px;
     border-radius: 20px;
+    white-space: nowrap;
 }
 
 /* --- CONTACT SECTION --- */

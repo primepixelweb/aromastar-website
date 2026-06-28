@@ -1,23 +1,21 @@
 // ==========================================
-// 1. SCROLLYTELLING CANVAS (PNG FRAMES - STARTS AT 1)
+// 1. SCROLLYTELLING CANVAS (PNG FRAMES - STARTS AT 000000)
 // ==========================================
 const canvas = document.getElementById("scrolly-video");
 const ctx = canvas.getContext("2d");
 
-// You have frames 1 to 239, so the total is 239
-const frameCount = 239; 
+// 000000 to 000239 equals exactly 240 frames
+const frameCount = 240; 
 const images = [];
 
 // Helper function to match the PNG frame names
 const currentFrame = (index) => {
-    // We add +1 because your files start at 1 instead of 0!
-    const actualFrameNumber = index + 1;
-    const paddedIndex = actualFrameNumber.toString().padStart(6, '0');
-    // Set to .png
+    // No +1 needed because your new files start at 0!
+    const paddedIndex = index.toString().padStart(6, '0');
     return `frames/frame_${paddedIndex}.png`;
 };
 
-// Preload all 239 images
+// Preload all 240 images
 for (let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = currentFrame(i);
@@ -77,7 +75,6 @@ window.addEventListener("scroll", () => {
     requestAnimationFrame(() => render(currentIndex));
 });
 
-
 // ==========================================
 // 2. MOBILE MENU FUNCTIONALITY
 // ==========================================
@@ -95,7 +92,6 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         navLinks.classList.remove("active");
     });
 });
-
 
 // ==========================================
 // 3. SCROLL REVEAL ANIMATIONS
