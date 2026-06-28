@@ -10,7 +10,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    /* Client's preferred clean body font */
+    font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -36,7 +37,7 @@ body {
     z-index: -2; 
 }
 
-/* --- DYNAMIC GLASS OVERLAY (Restored to 15% Tint) --- */
+/* --- DYNAMIC GLASS OVERLAY (15% Tint) --- */
 #video-overlay {
     position: fixed;
     top: 0;
@@ -86,9 +87,9 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif; /* Client's preferred heading font */
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--gold);
     cursor: pointer;
 }
@@ -165,15 +166,16 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .hero-gold-title {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 64px;
     color: var(--gold);
     margin-bottom: 10px;
+    text-transform: uppercase; /* Match client screenshot exactly */
     text-shadow: 0 5px 25px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,1);
 }
 
 .hero-sub-title {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 32px;
     color: var(--white);
     font-weight: 500;
@@ -182,6 +184,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .hero-gold-text {
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     color: var(--gold);
     font-weight: 500;
@@ -222,7 +225,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .about-content h2 {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 40px;
     color: var(--gold);
     margin-bottom: 20px;
@@ -247,7 +250,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 .stat-box h3 {
     font-size: 36px;
     color: var(--white);
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
@@ -270,7 +273,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .section-title h2 {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 40px;
     color: var(--gold);
     margin-bottom: 10px;
@@ -335,7 +338,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .pricing-card h3 {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 24px;
     margin-bottom: 15px;
     color: var(--white);
@@ -429,7 +432,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .service-category h3 {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 24px;
     color: var(--white);
     margin-bottom: 25px;
@@ -490,7 +493,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .contact-info h2 {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 36px;
     color: var(--gold);
     margin-bottom: 15px;
@@ -529,7 +532,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 4px;
     color: var(--white);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
 }
 
@@ -568,10 +571,10 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 .footer-logo {
-    font-family: 'Lora', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 28px;
     color: var(--gold);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 15px;
 }
 
