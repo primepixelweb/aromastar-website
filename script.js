@@ -1,16 +1,14 @@
 // ==========================================
-// 1. SCROLLYTELLING CANVAS (PNG FRAMES - STARTS AT 000000)
+// 1. SCROLLYTELLING CANVAS (BULLETPROOF VERSION)
 // ==========================================
 const canvas = document.getElementById("scrolly-video");
 const ctx = canvas.getContext("2d");
 
-// 000000 to 000239 equals exactly 240 frames
 const frameCount = 240; 
 const images = [];
 
 // Helper function to match the PNG frame names
 const currentFrame = (index) => {
-    // No +1 needed because your new files start at 0!
     const paddedIndex = index.toString().padStart(6, '0');
     return `frames/frame_${paddedIndex}.png`;
 };
@@ -23,11 +21,14 @@ for (let i = 0; i < frameCount; i++) {
 }
 
 function render(index) {
-    if (!images[index] || !images[index].complete) return;
-    
     const img = images[index];
+    
+    // THE FIX: Check if the image is fully loaded AND actually exists (naturalWidth > 0)
+    // If it's missing, it will safely skip it instead of turning the screen black!
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+    
     const canvasRatio = canvas.width / canvas.height;
-    const imgRatio = img.width / img.height;
+    const imgRatio = img.naturalWidth / img.naturalHeight;
     
     let drawWidth = canvas.width;
     let drawHeight = canvas.height;
