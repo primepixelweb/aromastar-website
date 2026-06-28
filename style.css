@@ -10,7 +10,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* New modern, readable font */
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
 }
@@ -37,7 +36,7 @@ body {
     z-index: -2; 
 }
 
-/* --- DYNAMIC GLASS OVERLAY (LIGHTENED FOR CLEAR VIDEO) --- */
+/* --- DYNAMIC GLASS OVERLAY (Restored to 15% Tint) --- */
 #video-overlay {
     position: fixed;
     top: 0;
@@ -47,15 +46,14 @@ body {
     z-index: -1; 
     pointer-events: none; 
     transition: background-color 1s ease-in-out; 
-    /* Opacity drastically reduced so video pops */
-    background-color: rgba(6, 15, 30, 0.4); 
+    background-color: rgba(2, 5, 10, 0.15); 
 }
 
-body.theme-home #video-overlay { background-color: rgba(6, 15, 30, 0.4); }
-body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.5); }
-body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.5); }
-body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.55); }
-body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.6); }
+body.theme-home #video-overlay { background-color: rgba(2, 5, 10, 0.15); }
+body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.3); }
+body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.4); }
+body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.4); }
+body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 
 /* --- SCROLL REVEAL ANIMATIONS --- */
 .reveal {
@@ -88,7 +86,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.6); }
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Lora', serif; /* Elegant heading font */
+    font-family: 'Lora', serif;
     font-size: 28px;
     font-weight: 600;
     color: var(--gold);
@@ -162,25 +160,34 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.6); }
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
     margin-top: 60px;
 }
 
-.hero-content h1 {
+.hero-gold-title {
     font-family: 'Lora', serif;
     font-size: 64px;
-    color: var(--white);
-    margin-bottom: 24px;
-    line-height: 1.15;
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,0.8);
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,1);
 }
 
-.hero-content p {
+.hero-sub-title {
+    font-family: 'Lora', serif;
+    font-size: 32px;
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,1);
+}
+
+.hero-gold-text {
     font-size: 18px;
-    color: #ffffff;
-    font-weight: 400;
+    color: var(--gold);
+    font-weight: 500;
     margin-bottom: 40px;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    line-height: 1.8;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,1);
 }
 
 .primary-btn {
@@ -286,7 +293,6 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.6); }
 }
 
 .pricing-card {
-    /* Slightly darkened to ensure readability against bright video */
     background-color: rgba(6, 12, 25, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
@@ -345,7 +351,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.6); }
 .pricing-card .price span {
     font-size: 14px;
     color: var(--text-gray);
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .package-features {
@@ -700,8 +706,9 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.6); }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    .hero-content h1 { font-size: 40px; }
-    .hero-content p { font-size: 16px; }
+    .hero-gold-title { font-size: 45px; }
+    .hero-sub-title { font-size: 22px; }
+    .hero-gold-text { font-size: 16px; }
 
     .pricing-card.popular { transform: scale(1); }
     .pricing-card.popular:hover { transform: scale(1) translateY(-5px); }
