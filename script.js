@@ -1,20 +1,23 @@
 // ==========================================
-// 1. SCROLLYTELLING CANVAS (COMPRESSED FRAMES)
+// 1. SCROLLYTELLING CANVAS (PNG FRAMES - STARTS AT 1)
 // ==========================================
 const canvas = document.getElementById("scrolly-video");
 const ctx = canvas.getContext("2d");
 
-const frameCount = 240; 
+// You have frames 1 to 239, so the total is 239
+const frameCount = 239; 
 const images = [];
 
-// Helper function to match the JPG frame names
+// Helper function to match the PNG frame names
 const currentFrame = (index) => {
-    const paddedIndex = index.toString().padStart(6, '0');
-    // Ensure this matches your compressed file extension! (.jpg)
-    return `frames/frame_${paddedIndex}.jpg`;
+    // We add +1 because your files start at 1 instead of 0!
+    const actualFrameNumber = index + 1;
+    const paddedIndex = actualFrameNumber.toString().padStart(6, '0');
+    // Set to .png
+    return `frames/frame_${paddedIndex}.png`;
 };
 
-// Preload all 240 images
+// Preload all 239 images
 for (let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = currentFrame(i);
@@ -54,13 +57,13 @@ window.addEventListener('resize', resizeCanvas);
 
 let currentIndex = 0;
 
-// FIX: Ensure the first frame draws immediately so it's not invisible at the top!
+// Draw the first frame immediately when it loads
 images[0].onload = resizeCanvas;
 if (images[0].complete) {
     resizeCanvas();
 }
 
-// The magic scroll function (No lag!)
+// The magic scroll function
 window.addEventListener("scroll", () => {
     const scrollTop = document.documentElement.scrollTop;
     const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
