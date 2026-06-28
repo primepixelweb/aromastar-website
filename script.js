@@ -10,7 +10,7 @@ const images = [];
 // Helper function to match the PNG frame names
 const currentFrame = (index) => {
     const paddedIndex = index.toString().padStart(6, '0');
-    return `frames/frame_${paddedIndex}.png`;
+    return `frames/frame_${paddedIndex}.webp`;
 };
 
 // Preload all 240 images
