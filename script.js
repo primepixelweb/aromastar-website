@@ -1,30 +1,26 @@
 // ==========================================
-// 1. APPLE-STYLE SCROLLYTELLING CANVAS VIDEO
+// 1. SCROLLYTELLING CANVAS (COMPRESSED FRAMES)
 // ==========================================
 const canvas = document.getElementById("scrolly-video");
 const ctx = canvas.getContext("2d");
 
-// We have 240 frames (0 to 239)
 const frameCount = 240; 
 const images = [];
 
-// Helper function to match exact file name format in the main folder
+// Helper function to match the JPG frame names
 const currentFrame = (index) => {
-    // Adds the zeros to the front (e.g., 5 becomes "000005")
     const paddedIndex = index.toString().padStart(6, '0');
-    
-    // Path fixed to look directly in the frames folder
-    return `frames/frame_${paddedIndex}.png`;
+    // Ensure this matches your compressed file extension! (.jpg)
+    return `frames/frame_${paddedIndex}.jpg`;
 };
 
-// Preload all 240 images into the browser's memory so there is ZERO lag
+// Preload all 240 images
 for (let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = currentFrame(i);
     images.push(img);
 }
 
-// Function to make the image cover the whole screen beautifully (Object-Fit: Cover)
 function render(index) {
     if (!images[index] || !images[index].complete) return;
     
@@ -49,7 +45,6 @@ function render(index) {
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
 }
 
-// Ensure canvas is always the exact size of the user's screen
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -57,19 +52,22 @@ function resizeCanvas() {
 }
 window.addEventListener('resize', resizeCanvas);
 
-// Draw the very first frame immediately when it loads
-images[0].onload = () => {
-    resizeCanvas();
-};
-
 let currentIndex = 0;
 
-// The magic scroll function
+// FIX: Ensure the first frame draws immediately so it's not invisible at the top!
+images[0].onload = resizeCanvas;
+if (images[0].complete) {
+    resizeCanvas();
+}
+
+// The magic scroll function (No lag!)
 window.addEventListener("scroll", () => {
     const scrollTop = document.documentElement.scrollTop;
     const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
     
-    const scrollFraction = scrollTop / maxScrollTop;
+    let scrollFraction = scrollTop / maxScrollTop;
+    if (scrollFraction < 0) scrollFraction = 0;
+    if (scrollFraction > 1) scrollFraction = 1;
     
     currentIndex = Math.min(frameCount - 1, Math.floor(scrollFraction * frameCount));
     
