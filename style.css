@@ -54,6 +54,8 @@ body.theme-home #video-overlay { background-color: transparent; }
 body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.3); }
 body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.4); }
 body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.4); }
+body.theme-work #video-overlay { background-color: rgba(6, 12, 25, 0.45); }
+body.theme-vlogs #video-overlay { background-color: rgba(8, 16, 30, 0.45); }
 body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 
 /* --- SCROLL REVEAL ANIMATIONS --- */
@@ -443,7 +445,6 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     list-style: none;
 }
 
-/* Flexbox tweak for long service names */
 .service-category li {
     display: flex;
     justify-content: space-between;
@@ -473,6 +474,105 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     padding: 5px 12px;
     border-radius: 20px;
     white-space: nowrap;
+}
+
+/* --- OUR WORK SECTION --- */
+.work-section {
+    padding: 100px 5%;
+}
+
+.work-grid {
+    display: flex;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.work-card {
+    background-color: rgba(6, 12, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.work-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.work-tags {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.work-description {
+    color: var(--text-gray);
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.work-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+.work-btn:hover {
+    background-color: var(--gold);
+    color: #0A192F;
+}
+
+.work-btn i {
+    margin-left: 8px;
+}
+
+/* --- VLOGS SECTION --- */
+.vlogs-section {
+    padding: 100px 5%;
+}
+
+.vlogs-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.vlogs-placeholder {
+    text-align: center;
+    border: 2px dashed rgba(212, 175, 55, 0.5);
+    padding: 60px 20px;
+    border-radius: 16px;
+    background-color: rgba(6, 12, 25, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.vlogs-placeholder h3 {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.vlogs-placeholder p {
+    color: var(--text-gray);
+    font-size: 15px;
 }
 
 /* --- CONTACT SECTION --- */
