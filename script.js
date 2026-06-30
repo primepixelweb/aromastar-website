@@ -1,5 +1,5 @@
 // ==========================================
-// 1. SCROLLYTELLING CANVAS (PNG FRAMES)
+// 1. SCROLLYTELLING CANVAS (BULLETPROOF .WEBP VERSION)
 // ==========================================
 const canvas = document.getElementById("scrolly-video");
 const ctx = canvas.getContext("2d");
@@ -9,21 +9,39 @@ const images = [];
 
 const currentFrame = (index) => {
     const paddedIndex = index.toString().padStart(6, '0');
-    return `frames/frame_${paddedIndex}.png`;
+    // Using the optimized .webp files!
+    return `frames/frame_${paddedIndex}.webp`;
 };
+
+let loadedCount = 0;
 
 for (let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = currentFrame(i);
+    img.onload = () => {
+        loadedCount++;
+        if (loadedCount === 1) {
+            resizeCanvas();
+        }
+    };
     images.push(img);
 }
 
 function render(index) {
-    if (!images[index] || !images[index].complete) return;
+    if (!images[index] || !images[index].complete || images[index].naturalWidth === 0) {
+        for(let i = 0; i < frameCount; i++) {
+            if (images[i] && images[i].complete && images[i].naturalWidth > 0) {
+                index = i;
+                break;
+            }
+        }
+    }
     
     const img = images[index];
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+    
     const canvasRatio = canvas.width / canvas.height;
-    const imgRatio = img.width / img.height;
+    const imgRatio = img.naturalWidth / img.naturalHeight;
     
     let drawWidth = canvas.width;
     let drawHeight = canvas.height;
@@ -47,14 +65,11 @@ function resizeCanvas() {
     canvas.height = window.innerHeight;
     render(currentIndex);
 }
+
 window.addEventListener('resize', resizeCanvas);
+window.addEventListener('load', resizeCanvas);
 
 let currentIndex = 0;
-
-images[0].onload = resizeCanvas;
-if (images[0].complete) {
-    resizeCanvas();
-}
 
 window.addEventListener("scroll", () => {
     const scrollTop = document.documentElement.scrollTop;
@@ -68,7 +83,6 @@ window.addEventListener("scroll", () => {
     
     requestAnimationFrame(() => render(currentIndex));
 });
-
 
 // ==========================================
 // 2. MOBILE MENU FUNCTIONALITY
@@ -87,7 +101,6 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         navLinks.classList.remove("active");
     });
 });
-
 
 // ==========================================
 // 3. SCROLL REVEAL ANIMATIONS
@@ -145,7 +158,6 @@ faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     
     question.addEventListener('click', () => {
-        // Close all other open FAQs
         faqItems.forEach(otherItem => {
             if (otherItem !== item && otherItem.classList.contains('active')) {
                 otherItem.classList.remove('active');
@@ -153,7 +165,6 @@ faqItems.forEach(item => {
             }
         });
 
-        // Toggle the clicked FAQ
         item.classList.toggle('active');
         const answer = item.querySelector('.faq-answer');
         

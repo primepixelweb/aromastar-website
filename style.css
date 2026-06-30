@@ -50,7 +50,7 @@ body {
     background-color: transparent; 
 }
 
-body.theme-home #video-overlay { background-color: transparent; }
+body.theme-home #video-overlay { background-color: rgba(2, 5, 10, 0.15); }
 body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.3); }
 body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.4); }
 body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.4); }
@@ -923,8 +923,8 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     position: fixed;
     width: 85px;  
     height: 85px;
-    bottom: 5px; 
-    right: 5px;  
+    bottom: 100px; 
+    right: 90px;  
     background-color: #25d366;
     color: #FFF;
     border-radius: 50%;
