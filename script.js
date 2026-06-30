@@ -1,5 +1,5 @@
 // ==========================================
-// 1. SCROLLYTELLING CANVAS (BULLETPROOF VERSION)
+// 1. SCROLLYTELLING CANVAS (PNG FRAMES)
 // ==========================================
 const canvas = document.getElementById("scrolly-video");
 const ctx = canvas.getContext("2d");
@@ -7,13 +7,11 @@ const ctx = canvas.getContext("2d");
 const frameCount = 240; 
 const images = [];
 
-// Helper function to match the PNG frame names
 const currentFrame = (index) => {
     const paddedIndex = index.toString().padStart(6, '0');
-    return `frames/frame_${paddedIndex}.webp`;
+    return `frames/frame_${paddedIndex}.png`;
 };
 
-// Preload all 240 images
 for (let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = currentFrame(i);
@@ -21,14 +19,11 @@ for (let i = 0; i < frameCount; i++) {
 }
 
 function render(index) {
+    if (!images[index] || !images[index].complete) return;
+    
     const img = images[index];
-    
-    // THE FIX: Check if the image is fully loaded AND actually exists (naturalWidth > 0)
-    // If it's missing, it will safely skip it instead of turning the screen black!
-    if (!img || !img.complete || img.naturalWidth === 0) return;
-    
     const canvasRatio = canvas.width / canvas.height;
-    const imgRatio = img.naturalWidth / img.naturalHeight;
+    const imgRatio = img.width / img.height;
     
     let drawWidth = canvas.width;
     let drawHeight = canvas.height;
@@ -56,13 +51,11 @@ window.addEventListener('resize', resizeCanvas);
 
 let currentIndex = 0;
 
-// Draw the first frame immediately when it loads
 images[0].onload = resizeCanvas;
 if (images[0].complete) {
     resizeCanvas();
 }
 
-// The magic scroll function
 window.addEventListener("scroll", () => {
     const scrollTop = document.documentElement.scrollTop;
     const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
@@ -75,6 +68,7 @@ window.addEventListener("scroll", () => {
     
     requestAnimationFrame(() => render(currentIndex));
 });
+
 
 // ==========================================
 // 2. MOBILE MENU FUNCTIONALITY
@@ -93,6 +87,7 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         navLinks.classList.remove("active");
     });
 });
+
 
 // ==========================================
 // 3. SCROLL REVEAL ANIMATIONS
@@ -139,4 +134,33 @@ const sectionObserver = new IntersectionObserver((entries, observer) => {
 
 sections.forEach(section => {
     sectionObserver.observe(section);
+});
+
+// ==========================================
+// 5. FAQ ACCORDION FUNCTIONALITY
+// ==========================================
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+        // Close all other open FAQs
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+                otherItem.classList.remove('active');
+                otherItem.querySelector('.faq-answer').style.maxHeight = 0;
+            }
+        });
+
+        // Toggle the clicked FAQ
+        item.classList.toggle('active');
+        const answer = item.querySelector('.faq-answer');
+        
+        if (item.classList.contains('active')) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+            answer.style.maxHeight = 0;
+        }
+    });
 });

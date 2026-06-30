@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8WRVHTF1YJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8WRVHTF1YJ');
+    </script>
+    <!-- End Google tag -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -28,17 +39,14 @@
     }
     </script>
 
-    <!-- BRAND FONTS: Playfair Display & Poppins -->
+    <!-- BRAND FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="theme-home">
 
-    <!-- THE SCROLLYTELLING CANVAS BACKGROUND -->
     <canvas id="scrolly-video"></canvas>
-    
-    <!-- THE DYNAMIC GLASS OVERLAY -->
     <div id="video-overlay"></div>
 
     <header class="navbar">
@@ -49,10 +57,10 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">About Us</a></li>
                 <li><a href="#packages">Packages</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="#blogs">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -66,7 +74,6 @@
         <a href="#contact" class="cta-btn desktop-only">Book a Free Consultation</a>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content reveal">
             <h1 class="hero-gold-title">AROMASTAR</h1>
@@ -76,7 +83,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about-section">
         <div class="about-content reveal">
             <h2>Your Digital Marketing Team in Navi Mumbai</h2>
@@ -99,7 +105,6 @@
         </div>
     </section>
 
-    <!-- Packages Section -->
     <section id="packages" class="packages-section">
         <div class="section-title reveal">
             <h2>Monthly Retainer Packages</h2>
@@ -146,7 +151,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="section-title reveal">
             <h2>Individual Services</h2>
@@ -211,7 +215,7 @@
         </div>
     </section>
 
-    <!-- BLOGS SECTION -->
+    <!-- BLOG SECTION -->
     <section id="blogs" class="blogs-section">
         <div class="section-title reveal">
             <h2>Our Latest Insights</h2>
@@ -219,7 +223,6 @@
         </div>
         
         <div class="blogs-grid reveal">
-            <!-- Blog Card 1 -->
             <div class="blog-card">
                 <div class="blog-image">
                     <i class="fa-solid fa-image"></i>
@@ -232,7 +235,6 @@
                 </div>
             </div>
 
-            <!-- Blog Card 2 -->
             <div class="blog-card">
                 <div class="blog-image">
                     <i class="fa-solid fa-image"></i>
@@ -245,7 +247,6 @@
                 </div>
             </div>
 
-            <!-- Blog Card 3 -->
             <div class="blog-card">
                 <div class="blog-image">
                     <i class="fa-solid fa-image"></i>
@@ -289,6 +290,45 @@
             <script src="https://elfsightcdn.com/platform.js" async></script>
             <div class="elfsight-app-6d4f3ba0-5ac8-4a7f-9f82-8fe5c4be63bc" data-elfsight-app-lazy></div>
             <!-- ⚠️ VIGHNESH: PASTE YOUR ELFSIGHT CODE EXACTLY ABOVE THIS LINE ⚠️ -->
+        </div>
+    </section>
+
+    <!-- NEW: FAQ SECTION -->
+    <section id="faq" class="faq-section">
+        <div class="section-title reveal">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about partnering with Aromastar.</p>
+        </div>
+        <div class="faq-container reveal">
+            
+            <div class="faq-item">
+                <button class="faq-question">How long does it take to see results from SEO? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>SEO is a long-term, compounding strategy. While initial improvements can be seen in the first 30 days, substantial ranking shifts and lead generation typically take 3 to 6 months depending on your industry's competitiveness.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Meta Ads vs. Google Ads: Which is better for me? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>It depends on your business goals. Google Ads captures "high-intent" users actively searching for your service right now. Meta (Facebook/Instagram) Ads are incredible for building brand awareness, retargeting, and generating impulse demand. We usually recommend a strategic mix of both.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Do I have to sign a long-term contract? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>We don't believe in locking clients into rigid multi-year contracts. Our monthly retainer packages are highly flexible, allowing us to earn your business month after month through tangible results and transparent reporting.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Why do I need a custom website instead of a cheap template? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>A template might look okay, but custom websites are built for speed, advanced SEO, and maximum conversion rates. A custom architecture ensures your website loads instantly, keeping users engaged and satisfying Google's strict ranking algorithms.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -343,7 +383,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#packages">Packages</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#blogs">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>

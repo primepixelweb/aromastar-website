@@ -57,6 +57,7 @@ body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.4); }
 body.theme-blogs #video-overlay { background-color: rgba(6, 12, 25, 0.45); }
 body.theme-work #video-overlay { background-color: rgba(6, 12, 25, 0.45); }
 body.theme-vlogs #video-overlay { background-color: rgba(8, 16, 30, 0.45); }
+body.theme-faq #video-overlay { background-color: rgba(4, 10, 20, 0.48); }
 body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 
 /* --- SCROLL REVEAL ANIMATIONS --- */
@@ -660,6 +661,77 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     font-size: 15px;
 }
 
+/* --- NEW: FAQ SECTION --- */
+.faq-section {
+    padding: 100px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: rgba(6, 12, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item.active {
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 25px 30px;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--gold);
+}
+
+.faq-question i {
+    color: var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq-answer p {
+    padding: 0 30px 25px;
+    color: var(--text-gray);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
 /* --- CONTACT SECTION --- */
 .contact-section {
     padding: 100px 5%;
@@ -847,18 +919,17 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
 }
 
 /* --- THE GEMINI WATERMARK ASSASSIN (WhatsApp Button) --- */
-/* Increased size and pushed deep into the corner to guarantee it hides the logo! */
 .whatsapp-float {
     position: fixed;
-    width: 75px;  /* Much bigger */
-    height: 75px;
-    bottom: 100px; /* Deep into the corner */
-    right: 90px;  /* Deep into the corner */
+    width: 85px;  
+    height: 85px;
+    bottom: 5px; 
+    right: 5px;  
     background-color: #25d366;
     color: #FFF;
     border-radius: 50%;
     text-align: center;
-    font-size: 40px;
+    font-size: 45px;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
     z-index: 1000;
     display: flex;
@@ -867,10 +938,6 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* 🛠️ PRO TIP: If the watermark is still slightly visible on your screen, 
-   just change the 'bottom' or 'right' numbers above! 
-   (e.g., change right: 15px; to right: 25px;) */
 
 .whatsapp-float:hover {
     transform: translateY(-5px) scale(1.05);
@@ -949,10 +1016,10 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     }
 
     .whatsapp-float {
-        width: 60px;
-        height: 60px;
-        bottom: 10px;
-        right: 10px;
-        font-size: 35px;
+        width: 70px;
+        height: 70px;
+        bottom: 5px;
+        right: 5px;
+        font-size: 38px;
     }
 }
