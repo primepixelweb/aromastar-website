@@ -54,6 +54,7 @@ body.theme-home #video-overlay { background-color: transparent; }
 body.theme-about #video-overlay { background-color: rgba(4, 10, 20, 0.3); }
 body.theme-packages #video-overlay { background-color: rgba(8, 16, 30, 0.4); }
 body.theme-services #video-overlay { background-color: rgba(4, 10, 20, 0.4); }
+body.theme-blogs #video-overlay { background-color: rgba(6, 12, 25, 0.45); }
 body.theme-work #video-overlay { background-color: rgba(6, 12, 25, 0.45); }
 body.theme-vlogs #video-overlay { background-color: rgba(8, 16, 30, 0.45); }
 body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
@@ -171,7 +172,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     font-family: 'Playfair Display', serif;
     font-size: 64px;
     color: var(--gold);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     text-transform: uppercase;
     text-shadow: 0 5px 25px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,1);
 }
@@ -181,7 +182,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     font-size: 32px;
     color: var(--white);
     font-weight: 500;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     text-shadow: 0 5px 25px rgba(0, 0, 0, 1), 0 2px 5px rgba(0,0,0,1);
 }
 
@@ -476,6 +477,86 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     white-space: nowrap;
 }
 
+/* --- BLOGS SECTION --- */
+.blogs-section {
+    padding: 100px 5%;
+}
+
+.blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-card {
+    background-color: rgba(6, 12, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.blog-image {
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.blog-content {
+    padding: 30px;
+}
+
+.blog-date {
+    font-size: 12px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.blog-excerpt {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.blog-read-more {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.blog-read-more:hover {
+    color: var(--white);
+}
+
 /* --- OUR WORK SECTION --- */
 .work-section {
     padding: 100px 5%;
@@ -544,14 +625,18 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     margin-left: 8px;
 }
 
-/* --- VLOGS SECTION --- */
+/* --- UPDATES (VLOGS) SECTION --- */
 .vlogs-section {
     padding: 100px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .vlogs-container {
-    max-width: 1000px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
 }
 
 .vlogs-placeholder {
@@ -761,18 +846,19 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     opacity: 0.8;
 }
 
-/* --- FLOATING WHATSAPP BUTTON --- */
+/* --- THE GEMINI WATERMARK ASSASSIN (WhatsApp Button) --- */
+/* Increased size and pushed deep into the corner to guarantee it hides the logo! */
 .whatsapp-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
+    width: 75px;  /* Much bigger */
+    height: 75px;
+    bottom: 100px; /* Deep into the corner */
+    right: 90px;  /* Deep into the corner */
     background-color: #25d366;
     color: #FFF;
-    border-radius: 50px;
+    border-radius: 50%;
     text-align: center;
-    font-size: 35px;
+    font-size: 40px;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
     z-index: 1000;
     display: flex;
@@ -782,9 +868,13 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* 🛠️ PRO TIP: If the watermark is still slightly visible on your screen, 
+   just change the 'bottom' or 'right' numbers above! 
+   (e.g., change right: 15px; to right: 25px;) */
+
 .whatsapp-float:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.8);
 }
 
 /* =========================================
@@ -824,7 +914,7 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     .pricing-card.popular { transform: scale(1); }
     .pricing-card.popular:hover { transform: scale(1) translateY(-5px); }
     
-    .services-grid { grid-template-columns: 1fr; }
+    .services-grid, .blogs-grid { grid-template-columns: 1fr; }
 
     .contact-container { flex-direction: column; }
     .contact-info, .contact-form { padding: 30px; }
@@ -859,10 +949,10 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     }
 
     .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 30px;
+        width: 60px;
+        height: 60px;
+        bottom: 10px;
+        right: 10px;
+        font-size: 35px;
     }
 }
