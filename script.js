@@ -9,7 +9,6 @@ const images = [];
 
 const currentFrame = (index) => {
     const paddedIndex = index.toString().padStart(6, '0');
-    // Using the optimized .webp files!
     return `frames/frame_${paddedIndex}.webp`;
 };
 
@@ -174,4 +173,97 @@ faqItems.forEach(item => {
             answer.style.maxHeight = 0;
         }
     });
+});
+
+// ==========================================
+// 6. MEDIUM API BLOG FETCHER & READING MODAL
+// ==========================================
+// ⚠️ VIGHNESH: ONCE SHE GIVES YOU HER MEDIUM USERNAME, PUT IT RIGHT HERE (e.g., '@aromastardigital')
+const mediumUserName = '@medium'; 
+
+const rssUrl = `https://medium.com/feed/${mediumUserName}`;
+const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
+
+const blogContainer = document.getElementById('medium-blogs-container');
+const blogModal = document.getElementById('blog-modal');
+const blogModalBody = document.getElementById('blog-modal-body');
+const closeModal = document.querySelector('.close-modal');
+
+// Fetch the blogs from Medium
+fetch(apiUrl)
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'ok' && data.items.length > 0) {
+            blogContainer.innerHTML = ''; 
+            const posts = data.items.slice(0, 3); // Grab latest 3 posts
+            
+            posts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'blog-card';
+                
+                // Extract Thumbnail
+                let imageUrl = post.thumbnail;
+                if(!imageUrl) {
+                    const imgRegex = /<img[^>]+src="?([^"\s]+)"?\s*\/>/g;
+                    const match = imgRegex.exec(post.content);
+                    imageUrl = match ? match[1] : 'logo.png'; 
+                }
+
+                const date = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                
+                // Create a short preview excerpt
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = post.content;
+                const textContent = tempDiv.textContent || tempDiv.innerText || "";
+                const excerpt = textContent.substring(0, 100) + '...';
+
+                card.innerHTML = `
+                    <div class="blog-image" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;"></div>
+                    <div class="blog-content">
+                        <span class="blog-date">${date}</span>
+                        <h3 class="blog-title">${post.title}</h3>
+                        <p class="blog-excerpt">${excerpt}</p>
+                        <a href="#" class="blog-read-more">Read Blog <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                `;
+                
+                card.querySelector('.blog-read-more').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openBlogModal(post.title, date, post.content);
+                });
+
+                blogContainer.appendChild(card);
+            });
+        } else {
+            blogContainer.innerHTML = '<p style="color: var(--text-gray); text-align: center; width: 100%;">No blogs published yet. Check back soon!</p>';
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching Medium feed:", error);
+        blogContainer.innerHTML = '<p style="color: red; text-align: center; width: 100%;">Could not load blogs. Please try again later.</p>';
+    });
+
+// Reading Window Functions
+function openBlogModal(title, date, content) {
+    blogModalBody.innerHTML = `
+        <h1 style="color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 5px;">${title}</h1>
+        <p style="color: var(--text-gray); font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">Published on ${date}</p>
+        <div class="modal-article-content">${content}</div>
+    `;
+    blogModal.style.display = "block";
+    document.body.style.overflow = "hidden"; // Stops the background from scrolling!
+}
+
+closeModal.addEventListener('click', () => {
+    blogModal.style.display = "none";
+    blogModalBody.innerHTML = '';
+    document.body.style.overflow = "auto"; 
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target == blogModal) {
+        blogModal.style.display = "none";
+        blogModalBody.innerHTML = '';
+        document.body.style.overflow = "auto";
+    }
 });
