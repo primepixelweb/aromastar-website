@@ -178,8 +178,7 @@ faqItems.forEach(item => {
 // ==========================================
 // 6. MEDIUM API BLOG FETCHER & READING MODAL
 // ==========================================
-// ⚠️ VIGHNESH: ONCE SHE GIVES YOU HER MEDIUM USERNAME, PUT IT RIGHT HERE (e.g., '@aromastardigital')
-const mediumUserName = '@medium'; 
+const mediumUserName = '@aromastar25'; // Connected to Client's Exact Account!
 
 const rssUrl = `https://medium.com/feed/${mediumUserName}`;
 const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
@@ -189,19 +188,17 @@ const blogModal = document.getElementById('blog-modal');
 const blogModalBody = document.getElementById('blog-modal-body');
 const closeModal = document.querySelector('.close-modal');
 
-// Fetch the blogs from Medium
 fetch(apiUrl)
     .then(res => res.json())
     .then(data => {
         if (data.status === 'ok' && data.items.length > 0) {
             blogContainer.innerHTML = ''; 
-            const posts = data.items.slice(0, 3); // Grab latest 3 posts
+            const posts = data.items.slice(0, 3); 
             
             posts.forEach(post => {
                 const card = document.createElement('div');
                 card.className = 'blog-card';
                 
-                // Extract Thumbnail
                 let imageUrl = post.thumbnail;
                 if(!imageUrl) {
                     const imgRegex = /<img[^>]+src="?([^"\s]+)"?\s*\/>/g;
@@ -211,7 +208,6 @@ fetch(apiUrl)
 
                 const date = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
                 
-                // Create a short preview excerpt
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = post.content;
                 const textContent = tempDiv.textContent || tempDiv.innerText || "";
@@ -235,7 +231,8 @@ fetch(apiUrl)
                 blogContainer.appendChild(card);
             });
         } else {
-            blogContainer.innerHTML = '<p style="color: var(--text-gray); text-align: center; width: 100%;">No blogs published yet. Check back soon!</p>';
+            // Displays this clean message if she hasn't written any blogs yet!
+            blogContainer.innerHTML = '<p style="color: var(--text-gray); text-align: center; width: 100%; font-size: 18px;">No blogs published yet. Check back soon!</p>';
         }
     })
     .catch(error => {
@@ -243,7 +240,6 @@ fetch(apiUrl)
         blogContainer.innerHTML = '<p style="color: red; text-align: center; width: 100%;">Could not load blogs. Please try again later.</p>';
     });
 
-// Reading Window Functions
 function openBlogModal(title, date, content) {
     blogModalBody.innerHTML = `
         <h1 style="color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 5px;">${title}</h1>
@@ -251,7 +247,7 @@ function openBlogModal(title, date, content) {
         <div class="modal-article-content">${content}</div>
     `;
     blogModal.style.display = "block";
-    document.body.style.overflow = "hidden"; // Stops the background from scrolling!
+    document.body.style.overflow = "hidden"; 
 }
 
 closeModal.addEventListener('click', () => {
