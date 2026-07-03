@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Homepage (Highest Priority) -->
+  <url>
+    <loc>https://www.aromastar.in/</loc>
+    <lastmod>2026-07-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://www.aromastar.in/privacy.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Terms & Conditions -->
+  <url>
+    <loc>https://www.aromastar.in/terms.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Cancellation Policy -->
+  <url>
+    <loc>https://www.aromastar.in/cancellation.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
