@@ -178,7 +178,7 @@ faqItems.forEach(item => {
 // ==========================================
 // 6. MEDIUM API BLOG FETCHER & READING MODAL
 // ==========================================
-const mediumUserName = '@aromastar25'; // Connected to Client's Exact Account!
+const mediumUserName = '@aromastar25'; 
 
 const rssUrl = `https://medium.com/feed/${mediumUserName}`;
 const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
@@ -188,59 +188,61 @@ const blogModal = document.getElementById('blog-modal');
 const blogModalBody = document.getElementById('blog-modal-body');
 const closeModal = document.querySelector('.close-modal');
 
-fetch(apiUrl)
-    .then(res => res.json())
-    .then(data => {
-        if (data.status === 'ok' && data.items.length > 0) {
-            blogContainer.innerHTML = ''; 
-            const posts = data.items.slice(0, 3); 
-            
-            posts.forEach(post => {
-                const card = document.createElement('div');
-                card.className = 'blog-card';
+if(blogContainer) {
+    fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'ok' && data.items.length > 0) {
+                blogContainer.innerHTML = ''; 
+                const posts = data.items.slice(0, 3); 
                 
-                let imageUrl = post.thumbnail;
-                if(!imageUrl) {
-                    const imgRegex = /<img[^>]+src="?([^"\s]+)"?\s*\/>/g;
-                    const match = imgRegex.exec(post.content);
-                    imageUrl = match ? match[1] : 'logo.png'; 
-                }
+                posts.forEach(post => {
+                    const card = document.createElement('div');
+                    card.className = 'blog-card';
+                    
+                    let imageUrl = post.thumbnail;
+                    if(!imageUrl) {
+                        const imgRegex = /<img[^>]+src="?([^"\s]+)"?\s*\/>/g;
+                        const match = imgRegex.exec(post.content);
+                        imageUrl = match ? match[1] : 'logo.png'; 
+                    }
 
-                const date = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = post.content;
-                const textContent = tempDiv.textContent || tempDiv.innerText || "";
-                const excerpt = textContent.substring(0, 100) + '...';
+                    const date = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = post.content;
+                    const textContent = tempDiv.textContent || tempDiv.innerText || "";
+                    const excerpt = textContent.substring(0, 100) + '...';
 
-                card.innerHTML = `
-                    <div class="blog-image" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;"></div>
-                    <div class="blog-content">
-                        <span class="blog-date">${date}</span>
-                        <h3 class="blog-title">${post.title}</h3>
-                        <p class="blog-excerpt">${excerpt}</p>
-                        <a href="#" class="blog-read-more">Read Blog <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                `;
-                
-                card.querySelector('.blog-read-more').addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openBlogModal(post.title, date, post.content);
+                    card.innerHTML = `
+                        <div class="blog-image" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;"></div>
+                        <div class="blog-content">
+                            <span class="blog-date">${date}</span>
+                            <h3 class="blog-title">${post.title}</h3>
+                            <p class="blog-excerpt">${excerpt}</p>
+                            <a href="#" class="blog-read-more">Read Blog <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    `;
+                    
+                    card.querySelector('.blog-read-more').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openBlogModal(post.title, date, post.content);
+                    });
+
+                    blogContainer.appendChild(card);
                 });
-
-                blogContainer.appendChild(card);
-            });
-        } else {
-            // Displays this clean message if she hasn't written any blogs yet!
-            blogContainer.innerHTML = '<p style="color: var(--text-gray); text-align: center; width: 100%; font-size: 18px;">No blogs published yet. Check back soon!</p>';
-        }
-    })
-    .catch(error => {
-        console.error("Error fetching Medium feed:", error);
-        blogContainer.innerHTML = '<p style="color: red; text-align: center; width: 100%;">Could not load blogs. Please try again later.</p>';
-    });
+            } else {
+                blogContainer.innerHTML = '<p style="color: var(--text-gray); text-align: center; width: 100%; font-size: 18px;">No blogs published yet. Check back soon!</p>';
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching Medium feed:", error);
+            blogContainer.innerHTML = '<p style="color: red; text-align: center; width: 100%;">Could not load blogs. Please try again later.</p>';
+        });
+}
 
 function openBlogModal(title, date, content) {
+    if(!blogModalBody) return;
     blogModalBody.innerHTML = `
         <h1 style="color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 5px;">${title}</h1>
         <p style="color: var(--text-gray); font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">Published on ${date}</p>
@@ -250,11 +252,13 @@ function openBlogModal(title, date, content) {
     document.body.style.overflow = "hidden"; 
 }
 
-closeModal.addEventListener('click', () => {
-    blogModal.style.display = "none";
-    blogModalBody.innerHTML = '';
-    document.body.style.overflow = "auto"; 
-});
+if(closeModal) {
+    closeModal.addEventListener('click', () => {
+        blogModal.style.display = "none";
+        blogModalBody.innerHTML = '';
+        document.body.style.overflow = "auto"; 
+    });
+}
 
 window.addEventListener('click', (e) => {
     if (e.target == blogModal) {
