@@ -990,8 +990,8 @@ body.theme-contact #video-overlay { background-color: rgba(2, 5, 10, 0.5); }
     position: fixed;
     width: 85px;  
     height: 85px;
-    bottom: 5px; 
-    right: 5px;  
+    bottom: 100px; 
+    right: 90px;  
     background-color: #25d366;
     color: #FFF;
     border-radius: 50%;
